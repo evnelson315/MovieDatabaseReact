@@ -5,7 +5,7 @@ var Form = require('./Form');
 var Results = require('./Results');
 //var Form = require('./Components/Form')Still working on the Form part.
 
-var Child1 = React.createClass({
+var Add = React.createClass({
 
 	render: function(){
 
@@ -35,4 +35,4 @@ var Child1 = React.createClass({
 	}
 });
 
-module.exports = Child1;
+module.exports = Add;

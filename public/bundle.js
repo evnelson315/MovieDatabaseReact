@@ -25407,18 +25407,16 @@
 
 	// Reference the high-level components
 	var Main = __webpack_require__(223);
-	var Child1 = __webpack_require__(224);
+	var Add = __webpack_require__(224);
 	var Child2 = __webpack_require__(227);
-	var Form = __webpack_require__(225);
-	var Results = __webpack_require__(226);
 
 	// Export the Routes
 	module.exports = React.createElement(
 		Route,
 		{ path: '/', component: Main },
-		React.createElement(Route, { path: 'Child1', component: Child1 }),
+		React.createElement(Route, { path: 'Add', component: Add }),
 		React.createElement(Route, { path: 'Child2', component: Child2 }),
-		React.createElement(IndexRoute, { component: Child1 })
+		React.createElement(IndexRoute, { component: Add })
 	);
 
 /***/ },
@@ -25501,8 +25499,8 @@
 	var Results = __webpack_require__(226);
 	//var Form = require('./Components/Form')Still working on the Form part.
 
-	var Child1 = React.createClass({
-		displayName: 'Child1',
+	var Add = React.createClass({
+		displayName: 'Add',
 
 
 		render: function render() {
@@ -25537,7 +25535,7 @@
 		}
 	});
 
-	module.exports = Child1;
+	module.exports = Add;
 
 /***/ },
 /* 225 */
