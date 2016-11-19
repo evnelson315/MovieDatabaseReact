@@ -25672,6 +25672,11 @@
 							"Movie Data"
 						)
 					),
+					React.createElement(
+						"p",
+						null,
+						"title"
+					),
 					React.createElement("input", { type: "text", className: "form-control ", id: "text" }),
 					React.createElement(
 						"p",

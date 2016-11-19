@@ -16,6 +16,7 @@ var Results = React.createClass({
 				<div className="panel-body text-center">
 
 						<h4><strong>Movie Data</strong></h4>
+								<p>title</p>
 								<input type="text" className="form-control " id="text"/>
 								<p>Year</p>
 								<input type="text"  className="form-control " id="text"/>
