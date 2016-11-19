@@ -25408,23 +25408,15 @@
 	// Reference the high-level components
 	var Main = __webpack_require__(223);
 	var Child1 = __webpack_require__(224);
-	var Child2 = __webpack_require__(225);
-	var GrandChild1 = __webpack_require__(226);
-	var GrandChild2 = __webpack_require__(227);
-	var GrandChild3 = __webpack_require__(228);
+	var Child2 = __webpack_require__(227);
+	var Form = __webpack_require__(225);
+	var Results = __webpack_require__(226);
 
 	// Export the Routes
 	module.exports = React.createElement(
 		Route,
 		{ path: '/', component: Main },
-		React.createElement(
-			Route,
-			{ path: 'Child1', component: Child1 },
-			React.createElement(Route, { path: 'GrandChild1', component: GrandChild1 }),
-			React.createElement(Route, { path: 'GrandChild2', component: GrandChild2 }),
-			React.createElement(Route, { path: 'GrandChild3', component: GrandChild3 }),
-			React.createElement(IndexRoute, { component: GrandChild1 })
-		),
+		React.createElement(Route, { path: 'Child1', component: Child1 }),
 		React.createElement(Route, { path: 'Child2', component: Child2 }),
 		React.createElement(IndexRoute, { component: Child1 })
 	);
@@ -25500,107 +25492,44 @@
 /* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	// Include React
 	var React = __webpack_require__(1);
 	// Include the Main Component
+	var Form = __webpack_require__(225);
+	var Results = __webpack_require__(226);
 	//var Form = require('./Components/Form')Still working on the Form part.
 
 	var Child1 = React.createClass({
-		displayName: "Child1",
+		displayName: 'Child1',
 
 
 		render: function render() {
 
 			return React.createElement(
-				"div",
-				{ className: "container" },
+				'div',
+				{ className: 'container' },
 				React.createElement(
-					"div",
-					{ className: "col-lg-12" },
+					'div',
+					{ className: 'col-lg-12' },
 					React.createElement(
-						"div",
-						{ className: "panel panel-default" },
+						'div',
+						{ className: 'panel panel-default' },
 						React.createElement(
-							"div",
-							{ className: "panel-heading" },
+							'div',
+							{ className: 'panel-heading' },
 							React.createElement(
-								"h3",
-								{ className: "panel-title" },
-								"Add or Delete a movie here!"
+								'h3',
+								{ className: 'panel-title' },
+								'Add or Delete a movie here!'
 							)
 						),
 						React.createElement(
-							"div",
-							{ className: "panel-body" },
-							React.createElement(
-								"p",
-								null,
-								" Enter the movie you'd like to add or delete "
-							),
-							React.createElement(
-								"p",
-								null,
-								"Title"
-							),
-							React.createElement("input", { type: "text", className: "form-control ", id: "text" }),
-							React.createElement(
-								"p",
-								null,
-								"Year"
-							),
-							React.createElement("input", { type: "text", className: "form-control ", id: "text" }),
-							React.createElement(
-								"p",
-								null,
-								"Rating"
-							),
-							React.createElement("input", { type: "text", className: "form-control ", id: "text" }),
-							React.createElement(
-								"p",
-								null,
-								"Actors"
-							),
-							React.createElement("input", { type: "text", className: "form-control ", id: "text" }),
-							React.createElement(
-								"p",
-								null,
-								"Genre"
-							),
-							React.createElement("input", { type: "text", className: "form-control ", id: "text" }),
-							React.createElement(
-								"p",
-								null,
-								React.createElement(
-									"a",
-									{ href: "#/Child1/GrandChild1" },
-									React.createElement(
-										"button",
-										{ className: "btn btn-success btn-sm" },
-										"Add this movie!"
-									)
-								),
-								React.createElement(
-									"a",
-									{ href: "#/Child1/GrandChild2" },
-									React.createElement(
-										"button",
-										{ className: "btn btn-danger btn-sm" },
-										"Delete"
-									)
-								),
-								React.createElement(
-									"a",
-									{ href: "#/Child1/GrandChild3" },
-									React.createElement(
-										"button",
-										{ className: "btn btn-success btn-sm" },
-										"Search by Field"
-									)
-								)
-							),
-							this.props.children
+							'div',
+							{ className: 'panel-body' },
+							React.createElement(Form, null),
+							React.createElement(Results, null)
 						)
 					)
 				)
@@ -25612,6 +25541,177 @@
 
 /***/ },
 /* 225 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	// Include React 
+	var React = __webpack_require__(1);
+
+	// This is the main component. It includes the banner and form element.
+	var Form = React.createClass({
+		displayName: "Form",
+
+
+		// Here we set a generic state associated with the text being searched for
+		getInitialState: function getInitialState() {
+			return {
+				term: ""
+			};
+		},
+
+		// This function will respond to the user input 
+		handleChange: function handleChange(event) {
+
+			// Here we create syntax to capture any change in text to the query terms (pre-search).
+			// See this Stack Overflow answer for more details: 
+			// http://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler
+			var newState = {};
+			newState[event.target.id] = event.target.value;
+			this.setState(newState);
+		},
+
+		// When a user submits... 
+		handleClick: function handleClick() {
+
+			console.log("CLICK");
+			console.log(this.state.term);
+
+			// Set the parent to have the search term
+			this.props.setTerm(this.state.term);
+		},
+
+		// Here we render the function
+		render: function render() {
+
+			return React.createElement(
+				"div",
+				{ className: "panel panel-default" },
+				React.createElement(
+					"div",
+					{ className: "panel-heading" },
+					React.createElement(
+						"h3",
+						{ className: "panel-title text-center" },
+						"Quick Search A Movie to Add to your Database"
+					)
+				),
+				React.createElement(
+					"div",
+					{ className: "panel-body text-center" },
+					React.createElement(
+						"form",
+						null,
+						React.createElement(
+							"div",
+							{ className: "form-group" },
+							React.createElement(
+								"h4",
+								{ className: "" },
+								React.createElement(
+									"strong",
+									null,
+									"Movie Title"
+								)
+							),
+							React.createElement("input", { type: "text", className: "form-control text-center", id: "term", onChange: this.handleChange, required: true }),
+							React.createElement("br", null),
+							React.createElement(
+								"button",
+								{ type: "button", className: "btn btn-primary", onClick: this.handleClick },
+								"Submit"
+							)
+						)
+					)
+				)
+			);
+		}
+	});
+
+	// Export the componen back for use in other files
+	module.exports = Form;
+
+/***/ },
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	// Include React 
+	var React = __webpack_require__(1);
+
+	// This is the main component. It includes the banner and Results element.
+	var Results = React.createClass({
+		displayName: "Results",
+
+
+		// Here we render the function
+		render: function render() {
+
+			return React.createElement(
+				"div",
+				{ className: "panel panel-default" },
+				React.createElement(
+					"div",
+					{ className: "panel-heading" },
+					React.createElement(
+						"h3",
+						{ className: "panel-title text-center" },
+						"Add to my Database here"
+					)
+				),
+				React.createElement(
+					"div",
+					{ className: "panel-body text-center" },
+					React.createElement(
+						"h4",
+						null,
+						React.createElement(
+							"strong",
+							null,
+							"Movie Data"
+						)
+					),
+					React.createElement("input", { type: "text", className: "form-control ", id: "text" }),
+					React.createElement(
+						"p",
+						null,
+						"Year"
+					),
+					React.createElement("input", { type: "text", className: "form-control ", id: "text" }),
+					React.createElement(
+						"p",
+						null,
+						"Rating"
+					),
+					React.createElement("input", { type: "text", className: "form-control ", id: "text" }),
+					React.createElement(
+						"p",
+						null,
+						"Actors"
+					),
+					React.createElement("input", { type: "text", className: "form-control ", id: "text" }),
+					React.createElement(
+						"p",
+						null,
+						"Genre"
+					),
+					React.createElement("input", { type: "text", value: this.props.data, className: "form-control ", id: "text" })
+				),
+				React.createElement(
+					"button",
+					{ type: "button", className: "btn btn-primary", onClick: this.handleClick },
+					"Add to my Database"
+				)
+			);
+		}
+	});
+
+	// Export the componen back for use in other files
+	module.exports = Results;
+
+/***/ },
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25655,117 +25755,6 @@
 	});
 
 	module.exports = Child2;
-
-/***/ },
-/* 226 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	// Include React
-	var React = __webpack_require__(1);
-
-	var GrandChild1 = React.createClass({
-		displayName: "GrandChild1",
-
-
-		render: function render() {
-			return React.createElement(
-				"div",
-				{ className: "panel panel-warning" },
-				React.createElement(
-					"div",
-					{ className: "panel-heading" },
-					React.createElement(
-						"h3",
-						{ className: "panel-title" },
-						"Grandchild #1"
-					)
-				),
-				React.createElement(
-					"div",
-					{ className: "panel-body" },
-					"Panel content"
-				)
-			);
-		}
-	});
-
-	module.exports = GrandChild1;
-
-/***/ },
-/* 227 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	// Include React
-	var React = __webpack_require__(1);
-
-	var GrandChild2 = React.createClass({
-		displayName: "GrandChild2",
-
-
-		render: function render() {
-			return React.createElement(
-				"div",
-				{ className: "panel panel-warning" },
-				React.createElement(
-					"div",
-					{ className: "panel-heading" },
-					React.createElement(
-						"h3",
-						{ className: "panel-title" },
-						"Grandchild #2"
-					)
-				),
-				React.createElement(
-					"div",
-					{ className: "panel-body" },
-					"Panel content"
-				)
-			);
-		}
-	});
-
-	module.exports = GrandChild2;
-
-/***/ },
-/* 228 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	// Include React
-	var React = __webpack_require__(1);
-
-	var GrandChild3 = React.createClass({
-		displayName: "GrandChild3",
-
-
-		render: function render() {
-			return React.createElement(
-				"div",
-				{ className: "panel panel-success" },
-				React.createElement(
-					"div",
-					{ className: "panel-heading" },
-					React.createElement(
-						"h3",
-						{ className: "panel-title" },
-						"Grandchild #3"
-					)
-				),
-				React.createElement(
-					"div",
-					{ className: "panel-body" },
-					"Panel content"
-				)
-			);
-		}
-	});
-
-	module.exports = GrandChild3;
 
 /***/ }
 /******/ ]);

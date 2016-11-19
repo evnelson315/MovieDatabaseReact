@@ -12,9 +12,9 @@ var IndexRoute	= Router.IndexRoute;
 var Main = require('../components/Main');
 var Child1 = require('../components/Children/Child1'); 
 var Child2 = require('../components/Children/Child2'); 
-var GrandChild1 = require('../components/Children/Grandchildren/GrandChild1');
-var GrandChild2 = require('../components/Children/Grandchildren/GrandChild2');
-var GrandChild3 = require('../components/Children/Grandchildren/GrandChild3');
+var Form = require('../components/Children/Form');
+var Results = require('../components/Children/Results');
+
 
 // Export the Routes
 module.exports = (
@@ -25,12 +25,6 @@ module.exports = (
 		{/* If user selects Child1 then show the appropriate component*/}
 		<Route path='Child1' component={Child1} >
 
-			{/*Child1 has its own Grandchildren options*/}
-			<Route path='GrandChild1' component={GrandChild1} />
-			<Route path='GrandChild2' component={GrandChild2} />
-			<Route path='GrandChild3' component={GrandChild3} />
-
-			<IndexRoute component={GrandChild1} />
 
 		</Route>
 
