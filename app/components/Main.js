@@ -14,8 +14,8 @@ var Main = React.createClass({
 					<h3>Your Home Movie Database</h3>
 					<hr/>
 					<p>
-						<a href="#/Child1"><button className="btn btn-primary btn-lg">Add or Delete a Movie</button></a>
-						<a href="#/Child2"><button className="btn btn-primary btn-lg">All My Movies</button></a>
+						<a href="#/Add"><button className="btn btn-primary btn-lg">Add or Delete a Movie</button></a>
+						<a href="#/Search"><button className="btn btn-primary btn-lg">All My Movies</button></a>
 					</p>
 				</div>
 

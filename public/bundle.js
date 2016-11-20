@@ -25408,14 +25408,14 @@
 	// Reference the high-level components
 	var Main = __webpack_require__(223);
 	var Add = __webpack_require__(224);
-	var Child2 = __webpack_require__(227);
+	var Search = __webpack_require__(227);
 
 	// Export the Routes
 	module.exports = React.createElement(
 		Route,
 		{ path: '/', component: Main },
 		React.createElement(Route, { path: 'Add', component: Add }),
-		React.createElement(Route, { path: 'Child2', component: Child2 }),
+		React.createElement(Route, { path: 'Search', component: Search }),
 		React.createElement(IndexRoute, { component: Add })
 	);
 
@@ -25456,7 +25456,7 @@
 						null,
 						React.createElement(
 							"a",
-							{ href: "#/Child1" },
+							{ href: "#/Add" },
 							React.createElement(
 								"button",
 								{ className: "btn btn-primary btn-lg" },
@@ -25465,7 +25465,7 @@
 						),
 						React.createElement(
 							"a",
-							{ href: "#/Child2" },
+							{ href: "#/Search" },
 							React.createElement(
 								"button",
 								{ className: "btn btn-primary btn-lg" },
@@ -25722,8 +25722,8 @@
 	// Include React
 	var React = __webpack_require__(1);
 
-	var Child2 = React.createClass({
-		displayName: "Child2",
+	var Search = React.createClass({
+		displayName: "Search",
 
 
 		render: function render() {
@@ -25757,7 +25757,7 @@
 		}
 	});
 
-	module.exports = Child2;
+	module.exports = Search;
 
 /***/ }
 /******/ ]);

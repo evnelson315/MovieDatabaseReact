@@ -1,7 +1,7 @@
 // Include React
 var React = require('react');
 // Include the Main Component
-var Form = require('./Form');
+var Form= require('./Form');
 var Results = require('./Results');
 //var Form = require('./Components/Form')Still working on the Form part.
 

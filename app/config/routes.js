@@ -27,8 +27,8 @@ module.exports = (
 
 		</Route>
 
-		{/* If user selects Child2 then show the appropriate component*/}
-		<Route path='Child2' component={Search} />
+		{/* If user selects Search then show the appropriate component*/}
+		<Route path='Search' component={Search} />
 
 		{/*If user selects any other path... we get the Home Route*/}
 		<IndexRoute component={Add} />
