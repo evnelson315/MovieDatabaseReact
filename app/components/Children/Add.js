@@ -1,11 +1,22 @@
 // Include React
 var React = require('react');
 // Include the Main Component
-var Form= require('./Form');
-var Results = require('./Results');
+var ApiCall= require('./ApiCall');
+var Form = require('./Form');
 //var Form = require('./Components/Form')Still working on the Form part.
 
 var Add = React.createClass({
+	catchMovieData: function(data){
+		var object = {
+			title:data.title,
+			year:data.year,
+			rating:data.rating,
+			actors:data.actors,
+			genre:data.genre
+		}
+			console.log(object);
+
+	},
 
 	render: function(){
 
@@ -19,8 +30,8 @@ var Add = React.createClass({
 						</div>
 						<div className="panel-body">
 						
-						<Form/>
-						<Results/>
+						<ApiCall/>
+						<Form onSubmitNewMovie={this.catchMovieData.bind(this)}/>
 								
 
 

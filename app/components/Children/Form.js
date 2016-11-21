@@ -1,37 +1,44 @@
 // Include React 
 var React = require('react');
 
-// This is the main component. It includes the banner and form element.
+// This is the main component. It includes the banner and Results element.
 var Form = React.createClass({
 
-	// Here we set a generic state associated with the text being searched for
-	getInitialState: function(){
-		return {
-			term: ""
-		}
-	},
+	formSubmit: function(e){
+		e.preventDefault()
+			var data = {};
+			var title = this.refs.title.value;
+			var year = this.refs.year.value;
+			var rating = this.refs.rating.value;
+			var actors = this.refs.actors.value;
+			var genre = this.refs.genre.value;
 
-	// This function will respond to the user input 
-	handleChange: function(event){
+				if (title.length > 0){
+						this.refs.title.value = "";
+						data.title = title;
+				}
 
-    	// Here we create syntax to capture any change in text to the query terms (pre-search).
-    	// See this Stack Overflow answer for more details: 
-    	// http://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler
-    	var newState = {};
-    	newState[event.target.id] = event.target.value;
-    	this.setState(newState);
+				if (year.length > 0){
+						this.refs.year.value = "";
+						data.year = year;
+				}
 
-	},
+				if (rating.length > 0){
+						this.refs.rating.value = "";
+						data.rating = rating;
+				}
 
-	// When a user submits... 
-	handleClick: function(){
+				if (actors.length > 0){
+						this.refs.actors.value = "";
+						data.actors = actors;
+				}
 
-		console.log("CLICK");
-		console.log(this.state.term);
-		
-		// Set the parent to have the search term
-		this.props.setTerm(this.state.term);
+				if (genre.length > 0){
+						this.refs.genre.value = "";
+						data.genre = genre;
+				}
 
+				this.props.onSubmitNewMovie(data);
 	},
 
 	// Here we render the function
@@ -41,27 +48,29 @@ var Form = React.createClass({
 
 			<div className="panel panel-default">
 				<div className="panel-heading">
-					<h3 className="panel-title text-center">Quick Search A Movie to Add to your Database</h3>
+					<h3 className="panel-title text-center">Add to my Database here</h3>
 				</div>
 				<div className="panel-body text-center">
 
-						<form>
-							<div className="form-group">
-								<h4 className=""><strong>Movie Title</strong></h4>
+						<h4><strong>Movie Data</strong></h4>
+							<form onSubmit = {this.formSubmit.bind(this)}>
+								<p>title</p>
+								<input type="text" ref="title" className="form-control " id="textTitle"/>
+								<p>Year</p>
+								<input type="text" ref="year" className="form-control " id="textYear"/>
+								<p>Rating</p>
+								<input type="text" ref="rating" className="form-control " id="textRating"/>
+								<p>Actors</p>
+								<input type="text" ref="actors" className="form-control " id="textActors"/>
+								<p>Genre</p>
+								<input type="text" ref="genre" className="form-control " id="textGenre"/>
+								<input type ="submit"/>
+							</form>
+							
 
-								{/*Note how each of the form elements has an id that matches the state. This is not necessary but it is convenient.
-									Also note how each has an onChange event associated with our handleChange event. 
-								*/}
-								<input type="text" className="form-control text-center" id="term" onChange= {this.handleChange} required/>
-								<br />
-								<button type="button" className="btn btn-primary" onClick={this.handleClick}>Submit</button>
-							</div>
-
-						</form>
 				</div>
+				
 			</div>
-
-
 
 		)
 	}

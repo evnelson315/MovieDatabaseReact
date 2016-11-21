@@ -25495,13 +25495,23 @@
 	// Include React
 	var React = __webpack_require__(1);
 	// Include the Main Component
-	var Form = __webpack_require__(225);
-	var Results = __webpack_require__(226);
+	var ApiCall = __webpack_require__(225);
+	var Form = __webpack_require__(226);
 	//var Form = require('./Components/Form')Still working on the Form part.
 
 	var Add = React.createClass({
 		displayName: 'Add',
 
+		catchMovieData: function catchMovieData(data) {
+			var object = {
+				title: data.title,
+				year: data.year,
+				rating: data.rating,
+				actors: data.actors,
+				genre: data.genre
+			};
+			console.log(object);
+		},
 
 		render: function render() {
 
@@ -25526,8 +25536,8 @@
 						React.createElement(
 							'div',
 							{ className: 'panel-body' },
-							React.createElement(Form, null),
-							React.createElement(Results, null)
+							React.createElement(ApiCall, null),
+							React.createElement(Form, { onSubmitNewMovie: this.catchMovieData.bind(this) })
 						)
 					)
 				)
@@ -25547,8 +25557,8 @@
 	var React = __webpack_require__(1);
 
 	// This is the main component. It includes the banner and form element.
-	var Form = React.createClass({
-		displayName: "Form",
+	var ApiCall = React.createClass({
+		displayName: "ApiCall",
 
 
 		// Here we set a generic state associated with the text being searched for
@@ -25627,7 +25637,7 @@
 	});
 
 	// Export the componen back for use in other files
-	module.exports = Form;
+	module.exports = ApiCall;
 
 /***/ },
 /* 226 */
@@ -25639,9 +25649,46 @@
 	var React = __webpack_require__(1);
 
 	// This is the main component. It includes the banner and Results element.
-	var Results = React.createClass({
-		displayName: "Results",
+	var Form = React.createClass({
+		displayName: "Form",
 
+
+		formSubmit: function formSubmit(e) {
+			e.preventDefault();
+			var data = {};
+			var title = this.refs.title.value;
+			var year = this.refs.year.value;
+			var rating = this.refs.rating.value;
+			var actors = this.refs.actors.value;
+			var genre = this.refs.genre.value;
+
+			if (title.length > 0) {
+				this.refs.title.value = "";
+				data.title = title;
+			}
+
+			if (year.length > 0) {
+				this.refs.year.value = "";
+				data.year = year;
+			}
+
+			if (rating.length > 0) {
+				this.refs.rating.value = "";
+				data.rating = rating;
+			}
+
+			if (actors.length > 0) {
+				this.refs.actors.value = "";
+				data.actors = actors;
+			}
+
+			if (genre.length > 0) {
+				this.refs.genre.value = "";
+				data.genre = genre;
+			}
+
+			this.props.onSubmitNewMovie(data);
+		},
 
 		// Here we render the function
 		render: function render() {
@@ -25671,47 +25718,47 @@
 						)
 					),
 					React.createElement(
-						"p",
-						null,
-						"title"
-					),
-					React.createElement("input", { type: "text", className: "form-control ", id: "text" }),
-					React.createElement(
-						"p",
-						null,
-						"Year"
-					),
-					React.createElement("input", { type: "text", className: "form-control ", id: "text" }),
-					React.createElement(
-						"p",
-						null,
-						"Rating"
-					),
-					React.createElement("input", { type: "text", className: "form-control ", id: "text" }),
-					React.createElement(
-						"p",
-						null,
-						"Actors"
-					),
-					React.createElement("input", { type: "text", className: "form-control ", id: "text" }),
-					React.createElement(
-						"p",
-						null,
-						"Genre"
-					),
-					React.createElement("input", { type: "text", value: this.props.data, className: "form-control ", id: "text" })
-				),
-				React.createElement(
-					"button",
-					{ type: "button", className: "btn btn-primary", onClick: this.handleClick },
-					"Add to my Database"
+						"form",
+						{ onSubmit: this.formSubmit.bind(this) },
+						React.createElement(
+							"p",
+							null,
+							"title"
+						),
+						React.createElement("input", { type: "text", ref: "title", className: "form-control ", id: "textTitle" }),
+						React.createElement(
+							"p",
+							null,
+							"Year"
+						),
+						React.createElement("input", { type: "text", ref: "year", className: "form-control ", id: "textYear" }),
+						React.createElement(
+							"p",
+							null,
+							"Rating"
+						),
+						React.createElement("input", { type: "text", ref: "rating", className: "form-control ", id: "textRating" }),
+						React.createElement(
+							"p",
+							null,
+							"Actors"
+						),
+						React.createElement("input", { type: "text", ref: "actors", className: "form-control ", id: "textActors" }),
+						React.createElement(
+							"p",
+							null,
+							"Genre"
+						),
+						React.createElement("input", { type: "text", ref: "genre", className: "form-control ", id: "textGenre" }),
+						React.createElement("input", { type: "submit" })
+					)
 				)
 			);
 		}
 	});
 
 	// Export the componen back for use in other files
-	module.exports = Results;
+	module.exports = Form;
 
 /***/ },
 /* 227 */
