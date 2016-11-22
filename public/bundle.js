@@ -25773,39 +25773,40 @@
 /* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	// Include React
 	var React = __webpack_require__(1);
+	var DBsearch = __webpack_require__(229);
 
 	var Search = React.createClass({
-		displayName: "Search",
+		displayName: 'Search',
 
 
 		render: function render() {
 
 			return React.createElement(
-				"div",
-				{ className: "container" },
+				'div',
+				{ className: 'container' },
 				React.createElement(
-					"div",
-					{ className: "col-lg-12" },
+					'div',
+					{ className: 'col-lg-12' },
 					React.createElement(
-						"div",
-						{ className: "panel panel-default" },
+						'div',
+						{ className: 'panel panel-default' },
 						React.createElement(
-							"div",
-							{ className: "panel-heading" },
+							'div',
+							{ className: 'panel-heading' },
 							React.createElement(
-								"h3",
-								{ className: "panel-title" },
-								"All My Movies!"
+								'h3',
+								{ className: 'panel-title' },
+								'All My Movies!'
 							)
 						),
 						React.createElement(
-							"div",
-							{ className: "panel-body" },
-							"Panel content"
+							'div',
+							{ className: 'panel-body' },
+							React.createElement(DBsearch, null)
 						)
 					)
 				)
@@ -25814,6 +25815,84 @@
 	});
 
 	module.exports = Search;
+
+/***/ },
+/* 228 */,
+/* 229 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	// Include React 
+	var React = __webpack_require__(1);
+
+	// This is the main component. It includes the banner and Results element.
+	var DBsearch = React.createClass({
+		displayName: "DBsearch",
+
+
+		formSubmit: function formSubmit(e) {
+			e.preventDefault();
+			var data = {};
+			var title = this.refs.title.value;
+			var year = this.refs.year.value;
+			var rating = this.refs.rating.value;
+			var actors = this.refs.actors.value;
+			var genre = this.refs.genre.value;
+
+			if (title.length > 0) {
+				this.refs.title.value = "";
+				data.title = title;
+			}
+
+			this.props.onSubmitSearchMovie(data);
+		},
+
+		// Here we render the function
+		render: function render() {
+
+			return React.createElement(
+				"div",
+				{ className: "panel panel-default" },
+				React.createElement(
+					"div",
+					{ className: "panel-heading" },
+					React.createElement(
+						"h3",
+						{ className: "panel-title text-center" },
+						"Search your Database here"
+					)
+				),
+				React.createElement(
+					"div",
+					{ className: "panel-body text-center" },
+					React.createElement(
+						"h4",
+						null,
+						React.createElement(
+							"strong",
+							null,
+							"Movie Search"
+						)
+					),
+					React.createElement(
+						"form",
+						{ onSubmit: this.formSubmit.bind(this) },
+						React.createElement(
+							"p",
+							null,
+							"title"
+						),
+						React.createElement("input", { type: "text", ref: "title", className: "form-control ", id: "textTitle" }),
+						React.createElement("input", { type: "submit" })
+					)
+				)
+			);
+		}
+	});
+
+	// Export the componen back for use in other files
+	module.exports = DBsearch;
 
 /***/ }
 /******/ ]);

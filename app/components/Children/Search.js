@@ -1,5 +1,6 @@
 // Include React
 var React = require('react');
+var DBsearch = require('./DBsearch');
 
 var Search = React.createClass({
 
@@ -14,7 +15,7 @@ var Search = React.createClass({
 							<h3 className="panel-title">All My Movies!</h3>
 						</div>
 						<div className="panel-body">
-							Panel content
+							<DBsearch/>
 						</div>
 					</div>
 				</div>
