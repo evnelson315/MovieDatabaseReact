@@ -8,10 +8,7 @@ var DBsearch = React.createClass({
 		e.preventDefault()
 			var data = {};
 			var title = this.refs.title.value;
-			var year = this.refs.year.value;
-			var rating = this.refs.rating.value;
-			var actors = this.refs.actors.value;
-			var genre = this.refs.genre.value;
+	
 
 				if (title.length > 0){
 						this.refs.title.value = "";
