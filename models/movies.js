@@ -1,4 +1,4 @@
-// Multiple 'Movies' can exist under a single 'Quest' item
+
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Movie = sequelize.define('Movie', {
