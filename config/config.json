@@ -2,11 +2,10 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "Moviedb",
-    "host": "localhost",
+    "database": "MovieDB",
+    "host": "127.0.0.1",
     "dialect": "mysql",
-    "port":"8889"
-
+    "port": "8889"
   },
   "test": {
     "username": "root",
@@ -16,10 +15,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "m3sn8r0jpwfgmf08",
-    "password": "yrv79xrg0v2xwqxw",
-    "database": "r4z4w5ailhybheia",
-    "host": "sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   }
 }

@@ -14,7 +14,18 @@ var Add = React.createClass({
 			actors:data.actors,
 			genre:data.genre
 		}
-			console.log(object);
+			fetch('/api/users/addMovie', {
+			method: 'post',
+			body: JSON.stringify(object),
+			headers: {
+				
+				'content-type': 'application/json',
+				'accept': 'application/json'
+			}
+			
+		}).then((response) => {
+			
+		});
 
 	},
 

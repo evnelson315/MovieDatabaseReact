@@ -25460,7 +25460,7 @@
 							React.createElement(
 								"button",
 								{ className: "btn btn-primary btn-lg" },
-								"Add or Delete a Movie"
+								"Add a Movie"
 							)
 						),
 						React.createElement(
@@ -25510,7 +25510,16 @@
 				actors: data.actors,
 				genre: data.genre
 			};
-			console.log(object);
+			fetch('/api/users/addMovie', {
+				method: 'post',
+				body: JSON.stringify(object),
+				headers: {
+
+					'content-type': 'application/json',
+					'accept': 'application/json'
+				}
+
+			}).then(function (response) {});
 		},
 
 		render: function render() {
