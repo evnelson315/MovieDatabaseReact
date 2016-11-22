@@ -25777,7 +25777,7 @@
 
 	// Include React
 	var React = __webpack_require__(1);
-	var DBsearch = __webpack_require__(229);
+	var DBsearch = __webpack_require__(228);
 
 	var Search = React.createClass({
 		displayName: 'Search',
@@ -25817,8 +25817,7 @@
 	module.exports = Search;
 
 /***/ },
-/* 228 */,
-/* 229 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
