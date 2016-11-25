@@ -25539,7 +25539,7 @@
 							React.createElement(
 								'h3',
 								{ className: 'panel-title' },
-								'Add or Delete a movie here!'
+								'Add a movie here!'
 							)
 						),
 						React.createElement(
