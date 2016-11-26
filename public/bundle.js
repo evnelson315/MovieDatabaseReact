@@ -25783,8 +25783,44 @@
 		displayName: 'Search',
 
 
-		render: function render() {
+		getInitialState: function getInitialState() {
+			return {
+				movies: []
+			};
+		},
+		componentWillMount: function componentWillMount() {
+			var _this = this;
 
+			fetch('/api/getMovies', {
+				headers: {
+
+					'content-type': 'application/json',
+					'accept': 'application/json'
+				}
+
+			}).then(function (response) {
+				return response.json();
+			}).then(function (results) {
+				_this.setState({
+					movies: results
+				});
+			});
+		},
+
+		render: function render() {
+			var _this2 = this;
+
+			console.log(this.state.movies);
+			var renderTitle = function renderTitle() {
+
+				return _this2.state.movies.map(function (movieTitle) {
+					return React.createElement(
+						'div',
+						null,
+						movieTitle.title
+					);
+				});
+			};
 			return React.createElement(
 				'div',
 				{ className: 'container' },
@@ -25807,6 +25843,16 @@
 							'div',
 							{ className: 'panel-body' },
 							React.createElement(DBsearch, null)
+						),
+						React.createElement(
+							'div',
+							{ className: 'panel-body' },
+							React.createElement(
+								'h1',
+								null,
+								'All My Movies'
+							),
+							renderTitle()
 						)
 					)
 				)

@@ -33,10 +33,18 @@ app.post('/api/users/addMovie', function(req,res){
 	});
 });
 
+app.get('/api/getMovies', function(req,res){
+	models.Movie.findAll().then(function(movies){
+		res.json(movies)
+	})
+})
+
+
 
 app.get('*', (req,res) => {
   res.sendFile(path.join(__dirname, './public/index.html'));
 })
+
 
 var PORT = process.env.PORT || 3000;
 

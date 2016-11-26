@@ -4,24 +4,61 @@ var DBsearch = require('./DBsearch');
 
 var Search = React.createClass({
 
+
+getInitialState: function(){
+	return{
+		movies:[]
+	}
+
+},
+componentWillMount:function(){
+	fetch('/api/getMovies', {
+			headers: {
+				
+				'content-type': 'application/json',
+				'accept': 'application/json'
+			}
+			
+		}).then((response) =>  
+			response.json()).then((results) =>{
+				this.setState({
+					movies:results
+				})
+			})
+},	
+
+
 	render: function(){
 
-		return(
-			<div className="container">
+	console.log(this.state.movies);
+	var renderTitle = ()=>{
 
-				<div className="col-lg-12">
-					<div className="panel panel-default">
-						<div className="panel-heading">
-							<h3 className="panel-title">All My Movies!</h3>
-						</div>
-						<div className="panel-body">
-							<DBsearch/>
+		return this.state.movies.map((movieTitle)=>{
+			return(
+				<div>{movieTitle.title}</div>)
+		});
+	};		
+			return(
+				<div className="container">
+
+					<div className="col-lg-12">
+						<div className="panel panel-default">
+							<div className="panel-heading">
+								<h3 className="panel-title">All My Movies!</h3>
+							</div>
+							<div className="panel-body">
+								<DBsearch/>
+							</div>
+							<div className="panel-body">
+								<h1>All My Movies</h1>
+								{renderTitle()}
+							</div>
 						</div>
 					</div>
-				</div>
 
-			</div>
-		)
+				</div>
+			)
+		
 	}
 });
 
