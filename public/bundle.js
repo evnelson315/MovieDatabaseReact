@@ -25811,6 +25811,14 @@
 			var _this2 = this;
 
 			console.log(this.state.movies);
+
+			// var renderYear = ()=>{
+
+			// return this.state.movies.map((movieYear)=>{
+			// 	return(
+			// 		<div>{movieYear.year}</div>)
+			// )};
+
 			var renderTitle = function renderTitle() {
 
 				return _this2.state.movies.map(function (movieTitle) {
@@ -25853,6 +25861,15 @@
 								'All My Movies'
 							),
 							renderTitle()
+						),
+						React.createElement(
+							'div',
+							{ className: 'panel-body' },
+							React.createElement(
+								'h1',
+								null,
+								'All Movie Years'
+							)
 						)
 					)
 				)

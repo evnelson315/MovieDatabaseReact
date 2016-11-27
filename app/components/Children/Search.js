@@ -30,13 +30,21 @@ componentWillMount:function(){
 
 	render: function(){
 
-	console.log(this.state.movies);
-	var renderTitle = ()=>{
+		console.log(this.state.movies);
 
-		return this.state.movies.map((movieTitle)=>{
-			return(
-				<div>{movieTitle.title}</div>)
-		});
+			// var renderYear = ()=>{
+
+			// return this.state.movies.map((movieYear)=>{
+			// 	return(
+			// 		<div>{movieYear.year}</div>)
+			// )};
+
+		var renderTitle = ()=>{
+
+			return this.state.movies.map((movieTitle)=>{
+				return(
+					<div>{movieTitle.title}</div>)
+			});
 	};		
 			return(
 				<div className="container">
@@ -52,6 +60,9 @@ componentWillMount:function(){
 							<div className="panel-body">
 								<h1>All My Movies</h1>
 								{renderTitle()}
+							</div>
+							<div className="panel-body">
+								<h1>All Movie Years</h1>
 							</div>
 						</div>
 					</div>
