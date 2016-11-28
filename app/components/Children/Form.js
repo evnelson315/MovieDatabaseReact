@@ -1,3 +1,6 @@
+
+/* There are a few moving parts on this page so lets start with the actual Form Element that is being rendered VVVVV */
+
 // Include React 
 var React = require('react');
 
@@ -38,6 +41,11 @@ var Form = React.createClass({
 						data.genre = genre;
 				}
 
+			{/* Now those ref tags from the html-like form element are coming into effect.
+			We are creating a variable for each data type using "this" and assignment their conventional name
+			Below we are putting them all in the prop of onSubmitNewMovie*/}
+
+
 				this.props.onSubmitNewMovie(data);
 	},
 
@@ -66,7 +74,10 @@ var Form = React.createClass({
 								<input type="text" ref="genre" className="form-control " id="textGenre"/>
 								<input type ="submit"/>
 							</form>
-							
+							{/* This form element may look like a typical html form but it has one significant difference. Check out the ref tag.
+							This is really important so there is somewhere for this data to be caught.
+							Also notice the now normal className naming structure. */}
+
 
 				</div>
 				
@@ -76,5 +87,5 @@ var Form = React.createClass({
 	}
 });
 
-// Export the componen back for use in other files
+// Export the component back for use in other files
 module.exports = Form;

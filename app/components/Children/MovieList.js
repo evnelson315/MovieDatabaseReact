@@ -27,12 +27,15 @@ var MovieList = React.createClass({
             if (movies.length === 0){
                 return (
                     <p className="noQuestsText text-center">There are no movies in your DB</p>
+                /* If there are ZERO movies in the DB, this p will be rendered.*/
+
                 );
             }
         }
         return (
             <div>
                 {noMovies()}
+
                 {renderMoviesList()}
             </div>
         );

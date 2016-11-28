@@ -1,8 +1,10 @@
 // Include React
 var React = require('react');
 // Include the Main Component
-var ApiCall= require('./ApiCall');
-var Form = require('./Form');
+var ApiCall= require('./ApiCall');/* We are requiring the ApiCall Component to be rendered on this Parent component of Add.js */
+
+var Form = require('./Form');/* Same thing with Form. */
+
 //var Form = require('./Components/Form')Still working on the Form part.
 
 var Add = React.createClass({
@@ -41,9 +43,15 @@ var Add = React.createClass({
 						</div>
 						<div className="panel-body">
 						
-						<ApiCall/>
+						<ApiCall/>{/* This is where we have the APIcall component. 
+						It is a work in progress and it not a priority freature in this project.
+						 */}
+
 						<Form onSubmitNewMovie={this.catchMovieData.bind(this)}/>
-								
+						{/* This catchMovieData.bind does exactly what it says it does! 
+						It catches all of the data off the form from Form.js when it was moved from an html-like element,
+						then to a prop called onSubmitNewMovie and binds it as catchMovieData. */}
+	
 
 
 				

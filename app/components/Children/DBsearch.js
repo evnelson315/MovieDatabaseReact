@@ -3,7 +3,6 @@ var React = require('react');
 
 // This is the main component. It includes the banner and Results element.
 var DBsearch = React.createClass({
-
 	formSubmit: function(e){
 		e.preventDefault()
 			var data = {};
@@ -14,10 +13,9 @@ var DBsearch = React.createClass({
 						this.refs.title.value = "";
 						data.title = title;
 				}
-
+				console.log(title);
 				this.props.onSubmitSearchMovie(data);
 
-				// console.log(title);
 	},
 
 	// Here we render the function

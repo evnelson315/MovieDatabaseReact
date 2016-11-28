@@ -25,6 +25,8 @@ componentWillMount:function(){
 					movies:results
 				})
 			})
+
+			
 },	
 
 
