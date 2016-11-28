@@ -16,6 +16,8 @@ var DBsearch = React.createClass({
 				}
 
 				this.props.onSubmitSearchMovie(data);
+
+				// console.log(title);
 	},
 
 	// Here we render the function
@@ -35,6 +37,11 @@ var DBsearch = React.createClass({
 								<input type="text" ref="title" className="form-control " id="textTitle"/>
 								<input type ="submit"/>
 							</form>
+
+							<div className="panel-body">
+								<h2>Search movie name goes here</h2>
+
+							</div>
 							
 
 				</div>

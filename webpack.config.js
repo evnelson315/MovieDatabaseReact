@@ -1,5 +1,5 @@
 module.exports = {
-  
+  devtool: 'inline-source-map',
   // This code will be compiled 
   entry: "./app/App.js",
 
