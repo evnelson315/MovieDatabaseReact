@@ -5,7 +5,7 @@ var MovieItem = require ('./MovieItem');
 var MovieList = React.createClass({
     render() {
         const { movies } = this.props;
-        console.log(movies);
+        // console.log(movies);
         var renderMoviesList = () => {
 
             return movies.map((movie, index) => {
