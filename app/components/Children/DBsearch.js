@@ -14,8 +14,7 @@ var DBsearch = React.createClass({
 						data.title = title;
 				}
 				console.log(title);
-				this.props.onSubmitSearchMovie(data);
-				console.log(data);
+				
 	},
 
 	// Here we render the function
