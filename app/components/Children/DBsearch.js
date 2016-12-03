@@ -3,18 +3,10 @@ var React = require('react');
 
 // This is the main component. It includes the banner and Results element.
 var DBsearch = React.createClass({
-	formSubmit: function(e){
-		e.preventDefault()
-			var data = {};
+	formSubmit: function(){
 			var title = this.refs.title.value;
-	
-
-				if (title.length > 0){
-						this.refs.title.value = "";
-						data.title = title;
-				}
-				console.log(title);
-				
+			console.log(title);
+			this.props.onSearch(title);
 	},
 
 	// Here we render the function
@@ -29,13 +21,10 @@ var DBsearch = React.createClass({
 				<div className="panel-body text-center">
 
 						<h4><strong>Movie Search</strong></h4>
-							<form onSubmit = {this.formSubmit.bind(this)}>
 								<p>title</p>
-								<input type="text" ref="title" className="form-control " id="textTitle"/>
-								<input type ="submit"/>
-							</form>
-
-							<div className="panel-body">
+								<input type="search" ref="title" className="form-control" onChange={this.formSubmit.bind(this)} id="textTitle"/>
+								
+								<div className="panel-body">
 								<h2>Searched movie name goes here</h2>
 
 							</div>

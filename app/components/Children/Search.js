@@ -6,26 +6,17 @@ var MovieList = require('./MovieList');
 var Search = React.createClass({
 getInitialState: function(){
     return{
-        movies:[]
-    }
+        movies:[],
+        searchMovies:""
+            }
 },
 
 
 //FUNCTION FOR THE SEARCH ON THE CHILD COMPONENT
-onSubmitSearchMovie:function(){
-    fetch('/api/searcMovies', {
-            headers: {
-                
-                'content-type': 'application/json',
-                'accept': 'application/json'
-            }
-            
-        }).then((response) =>  
-            response.json()).then((results) =>{
-                this.setState({
-                    searchedmovies:results
-                })
-            })
+onSubmitSearchMovie:function(search){
+   this.setState({
+            searchMovies: search.toLowerCase()
+        })
 },
 //THIS VVV RENDERS ALL THE MOVIES IN MY DB
 // THIS NEEDS TO BE AFTER THE INITIAL RENDER
@@ -46,6 +37,12 @@ componentDidMount:function(){
             
 },  
     render: function(){
+
+            const filterSearch = this.state.movies.filter((results) => {
+                var movies = results.title.toLowerCase();
+                return this.state.searchMovies.length === 0 || movies.indexOf(this.state.searchMovies) > -1
+                
+            });
     				
             return(
                 <div className="container">
@@ -58,8 +55,8 @@ componentDidMount:function(){
                             }
                             <div className="panel-body">
                                 <DBsearch 
-                                searchedmovies={this.state.searchedmovies}
-                                onSubmitSearchMovie={this.onSubmitSearchMovie}
+                                onSearch= {this.onSubmitSearchMovie.bind(this)}
+                               
                                 />
                             </div>
                             <div className="panel-body">
@@ -69,7 +66,7 @@ componentDidMount:function(){
                             {//THIS IS WHERE ALL THE MOVIES IN THE DB GET RENDERED
                             }
                             <div className="panel-body">
-                                <MovieList movies = {this.state.movies}/>
+                                <MovieList movies = {filterSearch}/>
                             </div>
                         </div>
                     </div>
