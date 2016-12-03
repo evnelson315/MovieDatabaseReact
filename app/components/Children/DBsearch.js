@@ -23,7 +23,8 @@ var DBsearch = React.createClass({
 						<h4><strong>Movie Search</strong></h4>
 								<p>title</p>
 								<input type="search" ref="title" className="form-control" onChange={this.formSubmit.bind(this)} id="textTitle"/>
-								
+								{//WE ARE NO LONGER USING A SEARCH FORM TO SEARCH FOR MOVIES. INPUT TYPE CHANGED FROM TEXT TO SEARCH. IN THE FORM SUBMIT FUNCTION, THE REF "TITLE" IS 
+                            }
 								<div className="panel-body">
 								<h2>Searched movie name goes here</h2>
 
