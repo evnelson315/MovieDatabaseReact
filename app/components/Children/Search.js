@@ -1,4 +1,5 @@
-// Include React
+// Include React Components
+// React Components should be Uppercase.
 var React = require('react');
 var DBsearch = require('./DBsearch');
 var MovieList = require('./MovieList');
@@ -6,10 +7,14 @@ var MovieList = require('./MovieList');
 //ES5 for initializing state in a constructor.
 
 var Search = React.createClass({
+        //React method getInitialState. It returns an object that gets set to this.state.
 getInitialState: function(){
+        //sets its name state to props value
     return{
+        //Added new state called movies and passed it an empty array
         movies:[],
-        //Added new state call searchMovies and passed it an empty array
+        //Added new state called searchMovies and passed it an empty string
+        //This empty string holds movies that are searched from the loaded array: movies.
         searchMovies:""
             }
 },
@@ -20,7 +25,7 @@ onSubmitSearchMovie:function(search){
             searchMovies: search.toLowerCase()
         })
 },
-//THIS VVV RENDERS ALL THE MOVIES IN MY DB
+//THIS GETS ALL THE MOVIES IN MY DB
 // THIS NEEDS TO BE AFTER THE INITIAL RENDER
 componentDidMount:function(){
     fetch('/api/getMovies', {
@@ -43,7 +48,10 @@ componentDidMount:function(){
             //This is the search function. I will be adding more about this shortly.
 
             const filterSearch = this.state.movies.filter((results) => {
+                //const is like creating another var
+                //this,state.movies is getting the props of movies from our get from the database.
                 var movies = results.title.toLowerCase();
+                //var movies is getting the movie titles and undercasing. No one searches with uppercase.
                 return this.state.searchMovies.length === 0 || movies.indexOf(this.state.searchMovies) > -1
                 
             });
@@ -60,15 +68,13 @@ componentDidMount:function(){
                             <div className="panel-body">
                                 <DBsearch 
                                 onSearch= {this.onSubmitSearchMovie.bind(this)}
+                                //onSearch is a built in attribute
                                
                                 />
                             </div>
                             <div className="panel-body">
                                 <h1>All My Movies</h1>
-                                
                             </div>
-                            {//THIS IS WHERE ALL THE MOVIES IN THE DB GET RENDERED
-                            }
                             <div className="panel-body">
                                 <MovieList movies = {filterSearch}/>
                             </div>
