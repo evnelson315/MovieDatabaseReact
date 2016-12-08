@@ -15,6 +15,7 @@ var MovieItem = React.createClass({
        				<p>Rating: {rating}</p>
        				<p>Actors: {actors}</p>
        				<p>Genre: {genre}</p>
+              <button>delete this movie</button>
        			</div>
 				
             )
