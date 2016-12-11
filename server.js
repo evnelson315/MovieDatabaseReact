@@ -39,6 +39,14 @@ app.get('/api/getMovies', function(req,res){
 	})
 })
 
+app.delete('/api/movieDelete/:id', function(req, res){
+    	models.Movie.destroy({ where: {
+        id:req.params.id}
+        }).then(function(success){
+      res.json(success);
+    })
+})
+
 
 
 app.get('*', (req,res) => {

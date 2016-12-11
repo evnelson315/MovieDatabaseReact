@@ -3,6 +3,7 @@
 var React = require('react');
 var DBsearch = require('./DBsearch');
 var MovieList = require('./MovieList');
+var _ = require('lodash');
 
 //ES5 for initializing state in a constructor.
 
@@ -18,6 +19,31 @@ getInitialState: function(){
         searchMovies:""
             }
 },
+//This is going to be my delete function, this will get passed down to the "grandchild" of MovieItem
+movieDelete:function(id){
+    const {movies} = this.state;
+
+    const movieDelete = _.remove(movies, movie => movie.id === id );
+
+    fetch(`/api/movieDelete/${movieDelete[0].id}`,{
+        method: "DELETE",
+        body: JSON.stringify(movieDelete),
+        headers: {
+                'content-type': 'application/json',
+                'accept': 'application/json'
+            }
+        }).then((response) => response.json())
+        .then((results) => {
+            this.setState({
+                movies: movies
+            })
+        })
+
+},
+
+
+
+
 
 //This is my new search function! Because we already Fetched what is in the database with componentDidMount, we can just search the displayed data of searchMovies.
 onSubmitSearchMovie:function(search){
@@ -76,7 +102,12 @@ componentDidMount:function(){
                                 <h1>All My Movies</h1>
                             </div>
                             <div className="panel-body">
-                                <MovieList movies = {filterSearch}/>
+                                <MovieList  
+                                    movies = {filterSearch}
+                                    //The delete movie funtion is being passed down from the grandparent component into MovieList component and setting variable as movieDelete (just a var name)
+                                    movieDelete = {this.movieDelete.bind(this)} 
+                                />
+
                             </div>
                         </div>
                     </div>

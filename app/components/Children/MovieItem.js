@@ -3,8 +3,9 @@ This allows all movies to be rendered with all data that we see. */}
 var React = require('react');
 
 var MovieItem = React.createClass({
+
 	render(){
-		const { title, year, rating, actors, genre } = this.props;
+		const { id, title, year, rating, actors, genre, movieDelete } = this.props;
 
 		
         const renderMovie = () => {
@@ -15,7 +16,8 @@ var MovieItem = React.createClass({
        				<p>Rating: {rating}</p>
        				<p>Actors: {actors}</p>
        				<p>Genre: {genre}</p>
-              <button>delete this movie</button>
+              <button onClick={()=>movieDelete(id)}
+              >delete this movie</button>
        			</div>
 				
             )

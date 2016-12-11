@@ -4,7 +4,7 @@ var MovieItem = require ('./MovieItem');
 
 var MovieList = React.createClass({
     render() {
-        const { movies } = this.props;
+        const { movies, movieDelete } = this.props;
         console.log(movies);
         var renderMoviesList = () => {
 
@@ -17,7 +17,9 @@ var MovieList = React.createClass({
                             rating={movie.rating}
                             actors={movie.actors}
                             genre={movie.genre}
+                            id={movie.id}
 	                    	key={index}
+                            movieDelete={movieDelete}
 	                    />
 	                </div>
                 );
